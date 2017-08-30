@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+#define FORI(s,n) for(int i = s; i < n; i++)
+
+using vi  = vector<int>;
+
+void print (vi v) {
+    for (const auto& e : v) cout << e << ' ';
+    cout << endl;
+}
+
+void heapSort (vi& v) {
+    
+    make_heap (v.begin (), v.end ());
+    
+    auto it = v.end ();
+    
+    while (it != v.begin ()) {
+        pop_heap (v.begin (), it);
+        it--;
+    }
+}
+
+int main()
+{
+    int n; cin >> n;
+    vi v (n);
+    FORI (0, n) cin >> v[i];
+    
+    heapSort (v);
+    
+    print (v);
+
+    return 0;
+}
